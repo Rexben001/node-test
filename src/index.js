@@ -10,7 +10,7 @@ connectWithRetry();
 // mongoose.connect('mongodb://mongo:27017/test_mongo');
 // mongoose.connect('mongodb://localhost/test_mongo');
 
-app.get('/', (req, res) => res.send('API is live'));
+app.get('/', (req, res) => res.send('API is live!!'));
 
 app.get('/users', async (req, res) => {
   try {
