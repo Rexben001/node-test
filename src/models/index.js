@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const options = {
   autoIndex: false, // Don't build indexes
@@ -15,13 +16,14 @@ let UserSchema = new mongoose.Schema({
 });
 
 const connectWithRetry = () => {
-  console.log('MongoDB connection with retry');
+  console.log('MongoDB connection with retry', process.env.MONGO_URL);
   mongoose
-    .connect('mongodb://mongo:27017/test_mongo', options)
+    .connect(process.env.MONGO_URL, options)
     .then(() => {
       console.log('MongoDB is connected');
     })
     .catch((err) => {
+      console.log('err>>>', err);
       console.log('MongoDB connection unsuccessful, retry after 5 seconds.');
       setTimeout(connectWithRetry, 5000);
     });
