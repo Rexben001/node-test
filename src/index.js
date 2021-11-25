@@ -1,5 +1,4 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const app = express();
 const { User, connectWithRetry } = require('./models');
 const PORT = process.env.PORT || 4100;
